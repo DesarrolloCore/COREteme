@@ -52,11 +52,3 @@ function element_in_scroll(elem){
 
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
-(function() {
-	var state = document.readyState;
-	if(state === 'interactive' || state === 'complete') {
-		jQuery('.contenedor').fadeOut(1000,"linear");
-		clearTimeout(arguments.callee);
-	}
-	else setTimeout(arguments.callee, 300);
-})();

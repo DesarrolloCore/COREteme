@@ -75,42 +75,9 @@
     </section> <!-- Fin de main -->    
     <?php  get_sidebar()?>
 </div>
-<div class="contenedor">
-    <?php /*?><div class="cssload-wrap">
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-        <div class="cssload-circle"></div>
-    </div><?php */?>
-    <div class="cssload-box-loading">
-	</div>
-</div>
+
+<?php include_once("loader.php");?>
+
 <?php get_footer(); ?>
 <script type="text/javascript">
 	paged = 1;
