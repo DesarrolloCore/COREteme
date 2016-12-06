@@ -15,12 +15,6 @@
         </a>
      </div>
 </footer>
-<?php /*?><div id="loader" class="pageload-overlay" data-opening="M 0,0 80,-10 80,60 0,70 0,0" data-closing="M 0,-10 80,-20 80,-10 0,0 0,-10">
-	<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="xMidYMid slice">
-		<path d="M 0,70 80,60 80,80 0,80 0,70"/>
-	</svg>
-</div><!-- /pageload-overlay --><?php */?>
-</div> <!-- Fin de main -->
 <?php wp_footer(); ?>
 
 <?php include_once("get_msg.php"); ?>
