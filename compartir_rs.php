@@ -18,7 +18,7 @@
         <meta property="og:title" content="<?php single_post_title(''); ?>" />
         <meta property="og:description" content="<?php 
         while(have_posts()):the_post();
-	        $out_excerpt = str_replace(array("\r\n", "\r", "\n"), "", get_the_excerpt());
+	        $out_excerpt = strip_tags(str_replace(array("\r\n", "\r", "\n"), "", get_the_excerpt()));
 	        echo apply_filters('the_excerpt_rss', $out_excerpt);
         endwhile; 	?>" />
         <meta property="og:url" content="<?php the_permalink(); ?>"/>
