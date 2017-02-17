@@ -414,4 +414,29 @@ function posts_masonry($query2){
 	endif;
 }
 /********************************************************************************************/
+
+
+//* Cambia el logotipo de la página inicio de sesión de WordPress (usar imagen de 80x80px)
+function mi_logo_personalizado() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logocore.png);
+			padding-bottom: 10px;
+			background-size: contain;
+			width: 150px;
+			height: 150px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'mi_logo_personalizado' );
+
+function mi_logo_personalizado_url() {
+    return get_bloginfo( 'url' );
+}
+add_filter( 'login_headerurl', 'mi_logo_personalizado_url' );
+function mi_logo_personalizado_url_titulo() {
+    return 'FRITAG';
+}
+add_filter( 'login_headertitle', 'mi_logo_personalizado_url_titulo' );
+
 ?>
