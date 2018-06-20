@@ -168,6 +168,11 @@ function add_theme_caps() {
 		mm_plugin_unpack($args, $args['path'].$plugin['name'].'.zip');
 		//mm_plugin_activate($plugin['install']);
 	}
+	
+	if ( !is_plugin_active( 'core-options/core-options.php' ) ) {
+		rcopy("{$_SERVER['DOCUMENT_ROOT']}/wp-content/themes/core/plugins/core-options/","{$_SERVER['DOCUMENT_ROOT']}/wp-content/plugins/core-options/");
+		mm_plugin_activate('core-options/core-options.php');
+	}
 }
 /****************************************************************/
 /* Carga la función de add_theme_caps cuando se inicie el admin */
@@ -438,5 +443,49 @@ function mi_logo_personalizado_url_titulo() {
     return 'FRITAG';
 }
 add_filter( 'login_headertitle', 'mi_logo_personalizado_url_titulo' );
+
+/*******************************************************************************************/
+/*Función para cargar las opciones del tema core*/
+$opciones;
+add_action( 'init', 'cargar_opciones' );
+function cargar_opciones(){
+	global $opciones;
+	global $wpdb;
+	$temp = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}opciones WHERE activo = 'activo'");
+	foreach($temp as $row){
+		$opciones[$row->opcion] = $row->valor;
+	}
+}
+/*******************************************************************************************/
+
+/**
+ * Recursively copy files from one directory to another
+ * 
+ * @param String $src - Source of files being moved
+ * @param String $dest - Destination of files being moved
+ */
+function rcopy($src, $dest){
+
+    // If source is not a directory stop processing
+    if(!is_dir($src)) return false;
+
+    // If the destination directory does not exist create it
+    if(!is_dir($dest)) { 
+        if(!mkdir($dest)) {
+            // If the destination directory could not be created stop processing
+            return false;
+        }    
+    }
+
+    // Open the source directory to read in files
+    $i = new DirectoryIterator($src);
+    foreach($i as $f) {
+        if($f->isFile()) {
+            copy($f->getRealPath(), "$dest/" . $f->getFilename());
+        } else if(!$f->isDot() && $f->isDir()) {
+            rcopy($f->getRealPath(), "$dest/$f");
+        }
+    }
+}
 
 ?>

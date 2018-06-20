@@ -1,14 +1,15 @@
 	<?php
+		global $opciones;
         $thumb = get_post_meta($post->ID,'_thumbnail_id',false);
         $thumb = wp_get_attachment_image_src($thumb[0], false);
         $thumb = $thumb[0];
 		
 		/* Se dejan en variables para solo modificar en un solo lugar */
-		$titulo = "Aquí va el título";
-		$descripcion = "Aquí va la descripción";
-		$twitter = "Aquí va el Twitter"; //sin el @
+		$titulo = $opciones['titulo'];
+		$descripcion = $opciones['extracto'];
+		$twitter = $opciones['usuarioTwitter'];//sin el @
 		// La imagen se debe de subir en la raíz de wordpress
-		$default_image = get_site_url() . "/core.png";
+		$default_image = $opciones['imagenDestacada'];
 		$GLOBALS["default_image"] = $default_image;
 		/**************************************************************/
 		
